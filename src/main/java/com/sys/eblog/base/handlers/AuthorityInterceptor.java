@@ -28,13 +28,16 @@ public class AuthorityInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object object) throws Exception {
         String uri = request.getRequestURI();
-       // log.info("拦截" + uri);
+        log.info("拦截" + uri);
         HttpSession session = request.getSession();
         System.out.println("preHandle");
-        if(uri.contains("hello"))
-          throw new NoLoginException("请先登录！");
-        else
-            return true ;
+        if(uri.contains("hello")) {  //需要拦截的uri
+            response.getWriter().write("<script>alert('请先登录');location.href='/login'</script>");
+            return false;
+        }
+        else {
+            return true;
+        }
         //return true;
     }
 

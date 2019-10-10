@@ -33,14 +33,14 @@ public class MyExceptionAdvice {
 	}
 
     /**
-     *参数异常
+     * 没有登录 跳转到登录
      */
     @ExceptionHandler(value = NoLoginException.class)
     public ModelAndView noLoginHandler(Exception ex, HttpServletRequest res, HttpServletResponse req) {
        String url = res.getRequestURL().toString();
-        System.out.println("**********");
-        System.out.println(url);
-       return new ModelAndView("redirect:login");
+       ModelAndView mv = new ModelAndView("redirect:login");
+       mv.addObject("a","b"); //传值
+       return mv;
     }
 
 
