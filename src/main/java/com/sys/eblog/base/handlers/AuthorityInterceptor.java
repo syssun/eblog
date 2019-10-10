@@ -1,5 +1,7 @@
 package com.sys.eblog.base.handlers;
 
+import com.sys.eblog.common.exceptions.NoLoginException;
+import com.sys.eblog.common.exceptions.ParamsException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 @Slf4j
 public class AuthorityInterceptor implements HandlerInterceptor {
-
+    //拦截登录
     private static final Set<String> INTERCEPT_URI = new HashSet<>();//拦截的URI
 
     static {
@@ -26,13 +28,14 @@ public class AuthorityInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object object) throws Exception {
         String uri = request.getRequestURI();
-        if (INTERCEPT_URI.contains(uri)) {
-            return true;
-        }
        // log.info("拦截" + uri);
         HttpSession session = request.getSession();
         System.out.println("preHandle");
-        return true;
+        if(uri.contains("hello"))
+          throw new NoLoginException("请先登录！");
+        else
+            return true ;
+        //return true;
     }
 
     /**

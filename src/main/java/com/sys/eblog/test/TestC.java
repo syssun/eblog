@@ -22,4 +22,9 @@ public class TestC {
     public String hello(){
         return "hello";
     }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 }
