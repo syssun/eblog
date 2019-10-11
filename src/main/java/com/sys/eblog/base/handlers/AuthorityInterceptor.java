@@ -1,7 +1,5 @@
 package com.sys.eblog.base.handlers;
 
-import com.sys.eblog.common.exceptions.NoLoginException;
-import com.sys.eblog.common.exceptions.ParamsException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,7 +30,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         System.out.println("preHandle");
         if(uri.contains("hello")) {  //需要拦截的uri
-            response.getWriter().write("<script>alert('请先登录');location.href='/login'</script>");
+            response.getWriter().write("<script>alert('1');location.href='/login'</script>");
             return false;
         }
         else {

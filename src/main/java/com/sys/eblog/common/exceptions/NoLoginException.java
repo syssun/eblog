@@ -13,9 +13,6 @@ public class NoLoginException extends RuntimeException{
         this.code = code;
     }
 
-
-
-
     private static final long serialVersionUID = 1L;
 
     public NoLoginException() {
