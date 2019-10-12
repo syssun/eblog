@@ -26,14 +26,17 @@
             font-size: 0.9rem;
             color: #000000;
         }
+        .card{
+            margin-bottom: 0.9rem;
+        }
     </style>
 </head>
 <body>
 <div th:replace="components/header::header"></div>
     <div class="container" style="margin-top: 0.8rem">
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-8">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8">
                 <div class="media media-h ">
                     <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">
                     <div class="media-body">
@@ -43,18 +46,28 @@
                             <span>点赞：7200</span>
                             <span>阅读：3200</span>
                             <span>评论：3200</span>
+                            <span>2019-10-12 12:30:56</span>
                         </div>
                     </div>
                 </div>
                 <hr>
             </div>
-            <div class="col-3">
-
+            <div class="col-sm-3">
+                <div th:replace="components/hotart::hotart"></div>
+                <div th:replace="components/recart::recart"></div>
             </div>
         </div>
-
-
     </div>
+<script>
+    $.ajax({
+        url:'/test',
+        method:'GET',
+        type:'json',
+        success:function (data) {
+            console.log(data)
+        }
+    })
+</script>
 <div th:replace="components/js::js"></div>
 </body>
 </html>

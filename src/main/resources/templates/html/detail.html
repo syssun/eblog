@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>E博客</title>
+    <style type="text/css">
+        a:link{text-decoration:none;}
+        a:visited{text-decoration:none;}
+        a:hover{text-decoration:none;}
+        a:active{text-decoration:none;}
+        .media-h{
+            cursor: pointer;
+        }
+        .media .media-span{
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            color: #adb5bd;
+        }
+        .media .media-span span{
+            margin-right: 2rem;
+        }
+        .media .media-p{
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+            color: #000000;
+        }
+        .card{
+            margin-bottom: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="components/header::header"></div>
+<div class="container" style="margin-top: 0.8rem">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-8">
+
+
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+            <div class="card-header bg-dark text-white">头部</div>
+            <div class="card-body">
+                <p>大概回调时刚发的</p>
+                <p>大概回调时刚发的</p>
+                <p>大概回调时刚发的</p>
+            </div>
+        </div>
+            <div class="card">
+                <div class="card-header bg-dark text-white">头部</div>
+                <div class="card-body">
+                    <p>大概回调时刚发的</p>
+                    <p>大概回调时刚发的</p>
+                    <p>大概回调时刚发的</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="components/js::js"></div>
+</body>
+</html>

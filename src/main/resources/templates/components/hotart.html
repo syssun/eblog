@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>E-blog-热门</title>
+
+</head>
+<body>
+<div  th:fragment="hotart" id="hotart_body">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"crossorigin="anonymous"></script>
+
+    <div class="card">
+        <div class="card-header bg-dark text-white">头部</div>
+        <div class="card-body">
+            <p  data-id="1">大概回调时刚发的</p>
+            <p>大概回调时刚发的</p>
+            <p>大概回调时刚发的</p>
+        </div>
+    </div>
+    <script>
+        var hotart = {
+            jump:function(){
+                var ht = '<div class="card">\n' +
+                    '        <div class="card-header bg-dark text-white">头部</div>\n' +
+                    '        <div class="card-body">\n' +
+                    '            <p onclick="hotart.jump(this)" data-id="1">大概回调时刚发的</p>\n' +
+                    '            <p>大概回调时刚发的</p>\n' +
+                    '            <p>大概回调时刚发的</p>\n' +
+                    '        </div>\n' +
+                    '    </div>';
+               $.ajax({
+                   url:'/test',
+                   method:'GET',
+                   type:'json',
+                   success:function (data) {
+                       $.each(data,function (index,item) {
+                           console.log(item);
+                           ht = ht+ht;
+                       })
+                       $("#hotart_body").html(ht);
+                   }
+               })
+            }
+        }
+        hotart.jump();
+    </script>
+</div>
+</body>
+</html>
