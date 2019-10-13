@@ -41,7 +41,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-7">
                 <div  th:each="item,itemStat : ${list}">
-                    <div class="media media-h " onclick="window.location.href='/detail/[[${item.User}]]'">
+                    <div class="media media-h " th:attr="data-id=${item.User}" th:onclick='index.toDetail(this)'>
                         <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">
                         <div class="media-body">
                             <h5>
@@ -69,7 +69,15 @@
             </div>
         </div>
     </div>
+<script>
+    var index = {
+        toDetail:function (obj) {
+            console.log(obj)
+            window.location.href = '/detail/'+obj.getAttribute('data-id') ;
+        }
+    }
 
+</script>
 <div th:replace="components/js::js"></div>
 </body>
 </html>
