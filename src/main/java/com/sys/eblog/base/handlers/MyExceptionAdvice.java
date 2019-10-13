@@ -86,7 +86,22 @@ public class MyExceptionAdvice {
        logger.error("SQLDataException", ex);
        return d;
     }
-    
+
+    @ResponseBody
+    @ExceptionHandler(value = IllegalArgumentException.class)
+    public Data ArgumentException(Exception ex, HttpServletRequest res, HttpServletResponse req) {
+        Data d = new Data();
+        d.setCode(10100);
+        // d.setMessage(ex.getMessage());
+        d.setMessage("非法参数");
+        logger.error("IllegalArgumentException", ex);
+        return d;
+    }
+
+
+
+
+
 	/**
      * 全局异常捕捉处理
      * @param ex
