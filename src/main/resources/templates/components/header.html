@@ -7,31 +7,28 @@
 <body th:fragment="header">
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">EBlog</a>
-
+    <a class="navbar-brand" href="/index">EBlog</a>
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-        </ul>
+    <div class="collapse navbar-collapse navbar-toggleable-sm justify-content-start"
+         style="margin-left: 4rem"
+         id="collapsibleNavbar">
+        <div class="nav navbar-nav">
+            <form class="form-inline">
+                <input class="form-control"
+                       style="box-shadow: none;padding: 0.3rem;height: calc(1.0em + .75rem + 0px)" type="text"
+                       placeholder="输入搜索内容">
+                <button class="btn btn-primary btn-sm" style="margin-left: 1rem;text-align: center;height: calc(1.0em + .75rem + 2px)"  type="button">&nbsp;&nbsp;搜索&nbsp;&nbsp;</button>
+            </form>
+        </div>
     </div>
-     <p class="nav navbar-nav navbar-right text-white ">
-         <span data-flg="0">登录/注册</span>
-         <!--<span data-flg="1">欢迎您:张三</span>-->
-     </p>
-
+        <div class="nav navbar-nav justify-content-center text-white"
+             style="margin-right: 2rem;margin-top: 0.3rem">
+            登录/注册
+        </div>
 </nav>
 </body>
