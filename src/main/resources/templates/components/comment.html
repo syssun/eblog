@@ -5,13 +5,18 @@
     <title>用户评价</title>
 </head>
 <body>
-<div th:fragment="comment" >
+<div th:fragment="comment(aid)" >
     <div class="media"> <!--评价区域-->
         <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">
-        <div class="media-body">
-            <p>学的不仅是技术，更是梦想！！！</p>
+        <div class="media-body" style="font-size: 0.8rem;">
+            <div>评价。。。评价</div>
         </div>
     </div>
+    <script>
+        var aid = [[${aid}]] ;
+        console.log(aid)
+    </script>
 </div>
+
 </body>
 </html>
