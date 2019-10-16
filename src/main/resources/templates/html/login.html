@@ -17,6 +17,10 @@
         .form-control{
             box-shadow: none;
         }
+        .form-control:focus{
+            webkit-box-shadow:none;
+            box-shadow:none;
+        }
         a:link{text-decoration:none;}
         a:visited{text-decoration:none;}
         a:hover{text-decoration:none;}
@@ -25,114 +29,135 @@
             position: relative;
             width: 100%;
             height: 100%;
+            min-width: 600px;
         }
         .login_panel{
             position: absolute;
-            top:10rem;
-            right: 15rem;
+            top:20em;
+            right: 30em;
             border: solid 1px #adb5bd;
             padding:2rem 4rem;
             font-size: 0.5rem;
-            -webkit-perspective: 800;
-            -webkit-perspective-origin:50% 50%;
         }
-        #transmain{
-            -webkit-transform-style:preserve-3d;
-            position: relative;
-
-            overflow:hidden;
-        }
-        #login_div{
-            -webkit-transform-origin: bottom;
-            -webkit-transition:-webkit-transform 1s linear;
-        }
-        #register_div,#forget_div{
-            -webkit-transform-origin:bottom;
-            -webkit-transition:-webkit-transform 1s linear;
-            -webkit-transform: rotateX(90deg);
-        }
-
     </style>
 </head>
 <body>
 <div class="login_body">
-    <div class="login_panel" id="transmain">
-        <div style="" id="login_div">
-            <form>
-                <div class="form-group">
-                    <input type="email" placeholder="输入邮箱" class="form-control" id="email">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="输入登录密码" class="form-control" id="pwd">
-                </div>
-                <div class="d-flex mb-3">
-                    <div class="p-2 flex-fill">
-                        <span><a href="#">立即注册</a></span>
-                    </div>
-                    <div class="p-2 flex-fill justify-content-start align-content-end">
-                        <span style="margin-left: 3rem"><a href="#">忘记密码</a></span>
-                    </div>
-                </div>
-                <button style="margin-top: 1rem" type="submit" class="btn btn-primary btn-sm btn-block">登&nbsp;&nbsp;录</button>
-            </form>
-        </div>
-        <div style="" id="register_div">
+    <div class="login_panel">
+        <div style="display: none" id="login_div">
             <form>
                 <div class="d-flex">
                     <div class="flex-fill">
                         <div class="form-group">
-                            <input type="email" placeholder="输入注册邮箱" class="form-control" >
+                            <input type="email" placeholder="输入注册邮箱" class="form-control  input-small input-mini" >
                         </div>
                     </div>
                 </div>
                 <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <input type="password" placeholder="输入验证码" class="form-control input-small" >
+                    </div>
+                    <div class="flex-grow-1" style="text-align: center">
+                        <p style="padding-left: 2em;margin-top: 5px;"><a href="#">发送</a></p>
+                    </div>
+                </div>
+                <div class="d-flex" style="margin-top: 2em">
+                    <div class="flex-fill" onclick="login.register()">
+                        <span><a href="javascript:;">立即注册</a></span>
+                    </div>
+                    <div class="flex-fill justify-content-start align-content-end" onclick="login.forget()">
+                        <span style="margin-left: 3rem"><a href="javascript:;">忘记密码</a></span>
+                    </div>
+                </div>
+                <button style="margin-top: 1rem" type="submit" class="btn btn-primary btn-sm btn-block">登&nbsp;&nbsp;录</button>
+            </form>
+        </div>
+        <div style="display: none" id="register_div">
+            <form>
+                <div class="d-flex">
                     <div class="flex-fill">
                         <div class="form-group">
-                            <input type="password" placeholder="输入验证码" class="form-control" >
+                            <input type="email" placeholder="输入注册邮箱" class="form-control  input-small input-mini" >
                         </div>
                     </div>
-                    <div class="flex-fill justify-content-start align-content-center">
-                        <span style="margin-left: 3rem"><a href="#">发送</a></span>
+                </div>
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                            <input type="password" placeholder="输入验证码" class="form-control input-small" >
+                    </div>
+                    <div class="flex-grow-1" style="text-align: center">
+                            <p style="padding-left: 2em;margin-top: 5px;"><a href="#">发送</a></p>
                     </div>
                 </div>
-                <div class="d-flex mb-3">
-                    <div class="p-2 flex-fill">
-                        <span><a href="#">立即注册</a></span>
+                <div class="d-flex" style="margin-top: 2em">
+                    <div class="flex-fill" onclick="login.login()">
+                        <span><a href="javascript:;">返回登录</a></span>
                     </div>
-                    <div class="p-2 flex-fill justify-content-start align-content-end">
-                        <span style="margin-left: 3rem"><a href="#">忘记密码</a></span>
+                    <div class="flex-fill justify-content-start align-content-end" onclick="login.forget()">
+                        <span style="margin-left: 3rem"><a href="javascript:;">忘记密码</a></span>
                     </div>
                 </div>
-                <button style="margin-top: 1rem" type="submit" class="btn btn-primary btn-sm btn-block">登&nbsp;&nbsp;录</button>
+                <button style="margin-top: 1rem" type="submit" class="btn btn-primary btn-sm btn-block">立即注册</button>
             </form>
         </div>
 
-        <div  id="forget_div">
+        <div style="display: none" id="forget_div">
             <form>
-                <div class="form-group">
-                    <input type="email" placeholder="输入邮箱" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="输入登录密码" class="form-control">
-                </div>
-                <div class="d-flex mb-3">
-                    <div class="p-2 flex-fill">
-                        <span><a href="#">立即注册</a></span>
-                    </div>
-                    <div class="p-2 flex-fill justify-content-start align-content-end">
-                        <span style="margin-left: 3rem"><a href="#">忘记密码</a></span>
+                <div class="d-flex">
+                    <div class="flex-fill">
+                        <div class="form-group">
+                            <input type="email" placeholder="输入注册邮箱" class="form-control  input-small input-mini" >
+                        </div>
                     </div>
                 </div>
-                <button style="margin-top: 1rem" type="submit" class="btn btn-primary btn-sm btn-block">登&nbsp;&nbsp;录</button>
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <input type="password" placeholder="输入验证码" class="form-control input-small" >
+                    </div>
+                    <div class="flex-grow-1" style="text-align: center">
+                        <p style="padding-left: 2em;margin-top: 5px;"><a href="#">发送</a></p>
+                    </div>
+                </div>
+                <div class="d-flex" style="margin-top: 2em">
+                    <div class="flex-fill" onclick="login.register()">
+                        <span><a href="javascript:;">立即注册</a></span>
+                    </div>
+                    <div class="flex-fill justify-content-start align-content-end" onclick="login.login()">
+                        <span style="margin-left: 3rem"><a href="javascript:;">返回登录</a></span>
+                    </div>
+                </div>
+                <button style="margin-top: 1rem" type="submit" class="btn btn-primary btn-sm btn-block">重置密码</button>
             </form>
         </div>
-
-
-
 
 
     </div>
 </div>
 <div th:replace="components/js::js"></div>
+<<script>
+    var login = {
+        init:function(){
+            $("#register_div").hide();
+            $("#login_div").show();
+            $("#forget_div").hide();
+        },
+        login:function () {
+            $("#register_div").hide();
+            $("#login_div").show();
+            $("#forget_div").hide();
+        },
+        register:function () {
+            $("#register_div").show();
+            $("#login_div").hide();
+            $("#forget_div").hide();
+        },
+        forget:function () {
+            $("#register_div").hide();
+            $("#login_div").hide();
+            $("#forget_div").show();
+        }
+    }
+    login.init();
+</script>
 </body>
 </html>
