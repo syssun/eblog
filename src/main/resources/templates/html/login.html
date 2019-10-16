@@ -15,7 +15,8 @@
             text-align: left;
         }
         .form-control{
-            box-shadow: none;
+            webkit-box-shadow:none;
+            box-shadow:none;
         }
         .form-control:focus{
             webkit-box-shadow:none;
@@ -44,7 +45,7 @@
 <body>
 <div class="login_body">
     <div class="login_panel">
-        <div style="display: none" id="login_div">
+        <div style="display: block" id="login_div">
             <form>
                 <div class="d-flex">
                     <div class="flex-fill">
@@ -157,7 +158,7 @@
             $("#forget_div").show();
         }
     }
-    login.init();
+    //login.init();
 </script>
 </body>
 </html>
