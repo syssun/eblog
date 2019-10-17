@@ -13,7 +13,8 @@ public class WebMvcConfigurer extends WebMvcConfigurationSupport {
          * 拦截器按照顺序执行,如果不同拦截器拦截存在相同的URL，前面的拦截器会执行，后面的拦截器将不执行
          */
         registry.addInterceptor(new AuthorityInterceptor())
-                .addPathPatterns("/**/**");
+                .addPathPatterns("/**/**")
+            .excludePathPatterns("/static/**");
         super.addInterceptors(registry);
     }
 
