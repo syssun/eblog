@@ -1,10 +1,8 @@
 package com.sys.eblog.base.handlers;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.util.ResourceUtils;
+import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class WebMvcConfigurer extends WebMvcConfigurationSupport {
@@ -21,16 +19,23 @@ public class WebMvcConfigurer extends WebMvcConfigurationSupport {
 
     /**
      * 解决url后缀包含特殊字符
+     *
      * @param configurer
      */
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         configurer.setUseSuffixPatternMatch(false);
     }
+
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         // to  avoid HttpMediaTypeNotAcceptableException on standalone tomcat
         configurer.favorPathExtension(false);
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/static/");
+        super.addResourceHandlers(registry);
+    }
 }
