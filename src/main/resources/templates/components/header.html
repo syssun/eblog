@@ -5,6 +5,16 @@
     <title>index</title>
 </head>
 <body th:fragment="header">
+<style>
+    input::-webkit-input-placeholder {
+        /* placeholder颜色  */
+        color: #aab2bd;
+        /* placeholder字体大小  */
+        font-size: 12px;
+        /* placeholder位置  */
+        text-align: left;
+    }
+</style>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="/index">EBlog</a>
@@ -28,7 +38,7 @@
     </div>
         <div class="nav navbar-nav justify-content-center text-white"
              style="margin-right: 2rem;margin-top: 0.3rem">
-            登录/注册
+            <a href="/login">登录/注册</a>
         </div>
 </nav>
 </body>
