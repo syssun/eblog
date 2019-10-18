@@ -6,6 +6,24 @@ public class HotArt extends BaseBean {
     private Integer id;
     private Integer aid ;
     private  String pid ;
+    private String title ;
+    private Integer reads ;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getReads() {
+        return reads;
+    }
+
+    public void setReads(Integer reads) {
+        this.reads = reads;
+    }
 
     public Integer getId() {
         return id;

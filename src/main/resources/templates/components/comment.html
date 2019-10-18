@@ -6,15 +6,54 @@
 </head>
 <body>
 <div th:fragment="comment(aid)" >
+    <style>
+        .tt{
+            margin-top: 0.8rem;
+            font-size: 0.1em;
+            color: #5a6268;
+        }
+    </style>
     <div class="media"> <!--评价区域-->
         <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">
-        <div class="media-body" style="font-size: 0.8rem;">
+        <div class="media-body" style="font-size: 0.8rem;" id="comments_div">
             <div>评价。。。评价</div>
+            <div class="tt">时间</div>
         </div>
     </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"crossorigin="anonymous"></script>
     <script>
-        var aid = [[${aid}]] ;
-        console.log(aid)
+        var comments = {
+            init:function(){
+                $.ajax({
+                    url:'/web/comments/'+[[${aid}]],
+                    method:'GET',
+                    type:'json',
+                    success:function (res) {
+                        var ht = '';
+                        var data = res.data ;
+                        $.each(data,function (index,item) {
+                            let s = '<div>'+item.content+'</div>'+
+                                    '<div class="tt">'+tts(item.adddate)+'</div>';
+                            console.log(tts(item.adddate))
+
+                            ht = ht+s;
+                        })
+                        $("#comments_div").html(ht);
+                    }
+                })
+            }
+        }
+        comments.init();
+
+        function tts(d) {
+            var myDate = new Date(d);//获取系统当前时间
+            return myDate.getFullYear()+"-"+tens(myDate.getMonth()+1)+"-"+tens(myDate.getDate()) +" "
+            +tens(myDate.getHours())+":"+tens(myDate.getMinutes())+":"+tens(myDate.getSeconds());
+        }
+        function tens(d) {
+            return d<10?"0"+d:d;
+        }
+
     </script>
 </div>
 

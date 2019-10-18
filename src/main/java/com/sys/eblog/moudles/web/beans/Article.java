@@ -12,6 +12,24 @@ public class Article extends BaseBean {
     private String userid;
     private String labels ;
     private String eclass ;
+    private String simg;
+private String scontent ;
+
+    public String getScontent() {
+        return scontent;
+    }
+
+    public void setScontent(String scontent) {
+        this.scontent = scontent;
+    }
+
+    public String getSimg() {
+        return simg;
+    }
+
+    public void setSimg(String simg) {
+        this.simg = simg;
+    }
 
     public Integer getAid() {
         return aid;

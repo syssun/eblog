@@ -8,7 +8,11 @@
 <body>
 <div  th:fragment="hotart" >
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"crossorigin="anonymous"></script>
+<style>
+    #hotart_body a{
 
+    }
+</style>
     <div class="card">
         <div class="card-header bg-dark text-white">热门阅读排行</div>
         <div class="card-body" id="hotart_body">
@@ -18,15 +22,15 @@
         var hotart = {
             jump:function(){
                $.ajax({
-                   url:'/test',
+                   url:'/web/hotlist',
                    method:'GET',
                    type:'json',
-                   success:function (data) {
+                   success:function (res) {
                        var ht = '';
+                       var data = res.data ;
                        $.each(data,function (index,item) {
-                           let s = '<p>'+item.User+'</p>';
+                           let s = '<p><a href="/web/detail/'+item.aid+'">'+item.title+'</a></p>';
                            ht = ht+s;
-                           console.log(item)
                        })
                        $("#hotart_body").html(ht);
                    }

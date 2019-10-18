@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.eblog.moudles.web.dao.ArticleDao">
+    <select id="getArtList" resultType="Article" parameterType="Article">
+		select a.simg,a.title,a.zans,a.adddate,a.reads,a.adddate,a.scontent,a.labels,a.comments,a.aid
+		from article a where a.delflg=0
+		<if test="title !=null and title !='' ">
+			and a.title like "%"#{title}"%"
+		</if>
+
+		order by a.aid desc
+	</select>
+	<select id="getArtByAid" resultType="Article" parameterType="String">
+		select a.simg,a.title,a.zans,a.adddate,a.reads,a.adddate,
+		a.scontent,a.labels,a.comments,a.aid,a.content
+		from article a where a.delflg=0 and a.aid = #{aid}
+	</select>
+</mapper>

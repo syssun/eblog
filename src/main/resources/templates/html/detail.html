@@ -46,41 +46,31 @@
             <div class="media media-h ">
                 <div class="media-body">
                     <h5>
-                        <b>List 分隔多次执行 且在同一个事物当中</b>
+                        <b th:text="${data.title}"></b>
                     </h5>
                     <div class="media-span">
-                        <span class="d">赞数：7200</span>
-                        <span class="d">阅读：3200</span>
-                        <span class="d">评论：3200</span>
-                        <span class="d">2019-10-12 12:30:56</span>
+                        <span class="d">赞数：<span th:text="${data.zans}">0</span></span>
+                        <span class="d">阅读：<span th:text="${data.reads}">0</span></span>
+                        <span class="d">评论：<span th:text="${data.comments}">0</span></span>
+                        <span class="d" th:text="${#dates.format(data.adddate,'yyyy-MM-dd HH:mm:ss')}"></span>
                         <span class="c">点赞</span>
                     </div>
                     <hr>
-                    <div class="media-p">
-                        <p>                        List 分隔多次执行 且在同一个事物当中
-                        </p>
-                        <strong>                        List 分隔多次执行 且在同一个事物当中
-                        </strong>
-                        List 分隔多次执行 且在同一个事物当中
-                        List 分隔多次执行 且在同一个事物当中
-                        List 分隔多
-                        List 分隔多次执行 且在同一个事物当中
-
-                        List 分隔多次执行 且在同一个事物当中
-                        List 分隔多次执行 且在同一个事物当中
+                    <div class="media-p" th:text="${data.content}">
+                        内容...
                     </div>
                 </div>
             </div>
             <hr>
             <div>
-                <p style="text-align: right;color:#A3A3A3;font-size: 0.8rem">时间：2019-10-12 12:30:56</p>
+                <p style="text-align: right;color:#A3A3A3;font-size: 0.8rem">时间：<span th:text="${#dates.format(data.adddate,'yyyy-MM-dd HH:mm:ss')}"></span></p>
             </div>
             <div style="text-align: right; ">
                 <textarea class="form-control" style="width: 100%" placeholder="我敢说..." maxlength="300" rows="2" id="comment"></textarea>
                 <button type="button" class="btn btn-danger btn-sm" style="margin-top: 1rem;">&nbsp;&nbsp;发表&nbsp;&nbsp;</button>
             </div>
             <hr>
-            <div th:replace="components/comment::comment('1')"></div>
+            <div th:replace="components/comment::comment(${data.aid})"></div>
 
         </div>
         <div class="col-sm-1">

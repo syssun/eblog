@@ -14,10 +14,10 @@
             /* placeholder位置  */
             text-align: left;
         }
-        a:link{text-decoration:none;}
-        a:visited{text-decoration:none;}
-        a:hover{text-decoration:none;}
-        a:active{text-decoration:none;}
+        a:link{text-decoration:none;color: #000000;}
+        a:visited{text-decoration:none;color: #000000;}
+        a:hover{text-decoration:none;color: #000000;}
+        a:active{text-decoration:none;color: #000000;}
         .media-h{
             cursor: pointer;
         }
@@ -49,19 +49,19 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-7">
                 <div  th:each="item,itemStat : ${list}">
-                    <div class="media media-h " th:attr="data-id=${item.User}" th:onclick='index.toDetail(this)'>
+                    <div class="media media-h " th:attr="data-id=${item.aid}" th:onclick='index.toDetail(this)'>
                         <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">
                         <div class="media-body">
                             <h5>
-                                <b th:text="${item.User}"></b>
+                                <b th:text="${item.title}"></b>
                             </h5>
-                            <div class="media-p" th:text="${item.authentication_string}">
+                            <div class="media-p" th:text="${item.scontent}">
                             </div>
                             <div class="media-span">
-                                <span>点赞：7200</span>
-                                <span>阅读：3200</span>
-                                <span>评论：3200</span>
-                                <span th:text="${item.password_last_changed}"></span>
+                                <span>点赞：<span th:text="${item.zans}">0</span></span>
+                                <span>阅读：<span th:text="${item.reads}">0</span></span>
+                                <span>评论：<span th:text="${item.comments}">0</span></span>
+                                <span th:text="${#dates.format(item.adddate,'yyyy-MM-dd HH:mm:ss')}"></span>
 
                             </div>
                         </div>
@@ -81,8 +81,7 @@
 <script>
     var index = {
         toDetail:function (obj) {
-            console.log(obj)
-            window.location.href = '/detail/'+obj.getAttribute('data-id') ;
+            window.location.href = '/web/detail/'+obj.getAttribute('data-id') ;
         }
     }
 
