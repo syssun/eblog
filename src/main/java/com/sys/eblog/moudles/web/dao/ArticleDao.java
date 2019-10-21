@@ -14,4 +14,6 @@ public interface ArticleDao {
     //通过ID 获取明细
     Article getArtByAid(@Param("aid") String aid);
 
+    //保存
+    int artAdd(Article article);
 }
