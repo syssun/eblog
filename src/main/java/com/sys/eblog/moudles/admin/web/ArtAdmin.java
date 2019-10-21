@@ -21,8 +21,8 @@ public class ArtAdmin {
     @RequestMapping("/artadd")
     public Data artAdd(@RequestBody  Article article){
         Data data = new Data(1,"success");
-        String content = new sun.misc.BASE64Encoder().encode(article.getContent().getBytes());
-        article.setContent(content.replace("+","").replace("=",""));
+        //String content = new sun.misc.BASE64Encoder().encode(article.getContent().getBytes());
+        //article.setContent(content.replace("+","").replace("=",""));
         articleDao.artAdd(article);
         return data ;
     }

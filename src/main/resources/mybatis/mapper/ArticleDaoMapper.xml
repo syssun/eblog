@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sys.eblog.moudles.web.dao.ArticleDao">
     <select id="getArtList" resultType="Article" parameterType="Article">
-		select a.simg,a.title,a.zans,a.adddate,a.reads,a.adddate,a.scontent,
+		select a.simg,a.title,a.zans,a.adddate,a.artreads as "reads",a.adddate,a.scontent,
 		a.labels,a.comments,a.aid
 		from article a where a.delflg=0
 		<if test="title !=null and title !='' ">
@@ -12,13 +12,13 @@
 		order by a.aid desc
 	</select>
 	<select id="getArtByAid" resultType="Article" parameterType="String">
-		select a.simg,a.title,a.zans,a.adddate,a.reads,a.adddate,
+		select a.simg,a.title,a.zans,a.adddate,a.artreads as "reads",a.adddate,
 		a.scontent,a.labels,a.comments,a.aid,a.content
 		from article a where a.delflg=0 and a.aid = #{aid}
 	</select>
 	<insert id="artAdd" parameterType="Article">
-		insert into article(title, content, zans, comments, reads, adddate,
-		upddate, delflg, userid, labels, eclass)
-		values (#{title},#{content},0,0,0,now(),now(),0,'1','','')
+		insert into article(title, content, zans, comments, artreads, adddate,
+		upddate, delflg, userid, labels)
+		values (#{title},#{content},0,0,0,now(),now(),0,'1','')
 	</insert>
 </mapper>
