@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sys.eblog.moudles.web.dao.ArticleDao">
     <select id="getArtList" resultType="Article" parameterType="Article">
-		select a.simg,a.title,a.zans,a.adddate,a.artreads as "reads",a.adddate,a.scontent,
+		select a.simg,a.title,a.zans,a.adddate,a.artreads as "artreads",a.adddate,a.scontent,
 		a.labels,a.comments,a.aid
 		from article a where a.delflg=0
 		<if test="title !=null and title !='' ">
@@ -12,7 +12,7 @@
 		order by a.aid desc
 	</select>
 	<select id="getArtByAid" resultType="Article" parameterType="String">
-		select a.simg,a.title,a.zans,a.adddate,a.artreads as "reads",a.adddate,
+		select a.simg,a.title,a.zans,a.adddate,a.artreads as "artreads",a.adddate,
 		a.scontent,a.labels,a.comments,a.aid,a.content
 		from article a where a.delflg=0 and a.aid = #{aid}
 	</select>
@@ -21,4 +21,18 @@
 		upddate, delflg, userid, labels)
 		values (#{title},#{content},0,0,0,now(),now(),0,'1','')
 	</insert>
+	<update id="artUpdate" parameterType="Article">
+		update article set update = now()
+		<if test="title !=null and title !='' ">
+			,title = #{title}
+		</if>
+		<if test="content !=null and content !='' ">
+			,content = #{content}
+		</if>
+		<if test="delflg !=null and delflg !=''">
+			,delflg = #{delflg}
+		</if>
+		where aid = #{aid}
+	</update>
+
 </mapper>

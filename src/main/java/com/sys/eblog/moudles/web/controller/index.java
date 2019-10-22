@@ -34,6 +34,7 @@ public class index {
     @RequestMapping("/detail/{aid}")
     public String detail(@PathVariable("aid") String aid,Model model){
         model.addAttribute("data",articleDao.getArtByAid(aid));
+        //文章阅读数加一   用消息队列
         return "html/detail";
     }
     //评论

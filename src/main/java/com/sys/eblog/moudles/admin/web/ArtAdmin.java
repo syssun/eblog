@@ -1,6 +1,7 @@
 package com.sys.eblog.moudles.admin.web;
 
 import com.sys.eblog.base.beans.Data;
+import com.sys.eblog.moudles.admin.service.ArtAdminService;
 import com.sys.eblog.moudles.web.beans.Article;
 import com.sys.eblog.moudles.web.dao.ArticleDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,12 @@ import java.util.Base64;
 @CrossOrigin("*")
 public class ArtAdmin {
     @Autowired
-    private ArticleDao articleDao ;
+    private ArtAdminService artAdminService ;
 
     @RequestMapping("/artadd")
     public Data artAdd(@RequestBody  Article article){
         Data data = new Data(1,"success");
-        //String content = new sun.misc.BASE64Encoder().encode(article.getContent().getBytes());
-        //article.setContent(content.replace("+","").replace("=",""));
-        articleDao.artAdd(article);
+        artAdminService.artAdd(article);
         return data ;
     }
 

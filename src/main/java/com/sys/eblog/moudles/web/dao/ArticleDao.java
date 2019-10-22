@@ -16,4 +16,7 @@ public interface ArticleDao {
 
     //保存
     int artAdd(Article article);
+    //修改删除 delflg=1
+    int artUpdate(Article article);
+
 }

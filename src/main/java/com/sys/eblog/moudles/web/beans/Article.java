@@ -8,7 +8,7 @@ public class Article extends BaseBean {
     private String content ;
     private Integer zans ;
     private Integer comments ;
-    private Integer reads ;
+    private Integer artreads ;
     private String userid;
     private String labels ;
     private String eclass ;
@@ -71,12 +71,12 @@ private String scontent ;
         this.comments = comments;
     }
 
-    public Integer getReads() {
-        return reads;
+    public Integer getArtreads() {
+        return artreads;
     }
 
-    public void setReads(Integer reads) {
-        this.reads = reads;
+    public void setArtreads(Integer artreads) {
+        this.artreads = artreads;
     }
 
     public String getUserid() {
