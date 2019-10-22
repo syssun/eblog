@@ -9,4 +9,7 @@
 		update artcomment set update = now(),delflg=1
 		where acid = #{acid}
 	</update>
+	<insert id="artCommentAdd" parameterType="ArtComment">
+
+	</insert>
 </mapper>
