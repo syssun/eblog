@@ -22,7 +22,7 @@
 		values (#{title},#{content},0,0,0,now(),now(),0,'1','')
 	</insert>
 	<update id="artUpdate" parameterType="Article">
-		update article set update = now()
+		update article set upddate = now()
 		<if test="title !=null and title !='' ">
 			,title = #{title}
 		</if>
@@ -34,5 +34,17 @@
 		</if>
 		where aid = #{aid}
 	</update>
-
+	<update id="artUpdateReads" parameterType="Article">
+		update article set upddate = now()
+		<if test="artreads !=null">
+			,artreads = artreads+1
+		</if>
+		<if test="zans !=null">
+			,zans = zans+1
+		</if>
+		<if test="comments !=null">
+			,comments = comments+1
+		</if>
+		where aid = #{aid}
+	</update>
 </mapper>

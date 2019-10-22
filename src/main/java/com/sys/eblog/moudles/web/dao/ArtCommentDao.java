@@ -12,4 +12,7 @@ public interface ArtCommentDao {
     List<ArtComment> getArtComments(@Param("aid") String aid) ;
     //删除评论
     int artCommentsDel(ArtComment artComment);
+
+    //增加评论
+    int artCommentAdd(ArtComment artComment);
 }

@@ -2,6 +2,8 @@ package com.sys.eblog.moudles.web.beans;
 
 import com.sys.eblog.base.beans.BaseBean;
 
+import java.util.Date;
+
 public class Article extends BaseBean {
     private Integer aid;
     private String title ;
@@ -13,7 +15,29 @@ public class Article extends BaseBean {
     private String labels ;
     private String eclass ;
     private String simg;
-private String scontent ;
+    private String scontent ;
+    private Date adddate ;
+    private Date upddate ;
+
+    @Override
+    public Date getAdddate() {
+        return adddate;
+    }
+
+    @Override
+    public void setAdddate(Date adddate) {
+        this.adddate = adddate;
+    }
+
+    @Override
+    public Date getUpddate() {
+        return upddate;
+    }
+
+    @Override
+    public void setUpddate(Date upddate) {
+        this.upddate = upddate;
+    }
 
     public String getScontent() {
         return scontent;

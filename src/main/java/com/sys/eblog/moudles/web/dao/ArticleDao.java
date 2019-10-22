@@ -19,4 +19,6 @@ public interface ArticleDao {
     //修改删除 delflg=1
     int artUpdate(Article article);
 
+    int artUpdateReads(Article article);
+
 }
