@@ -5,5 +5,8 @@
 		select a.aid,a.content,a.userid,a.adddate
 		from artcomment a where a.delflg=0 and a.aid=#{aid}
 	</select>
-
+	<update id="artCommentsDel" parameterType="ArtComment">
+		update artcomment set update = now(),delflg=1
+		where acid = #{acid}
+	</update>
 </mapper>

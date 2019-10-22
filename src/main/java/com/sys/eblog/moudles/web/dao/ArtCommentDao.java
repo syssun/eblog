@@ -10,5 +10,6 @@ import java.util.List;
 public interface ArtCommentDao {
     //获取评论
     List<ArtComment> getArtComments(@Param("aid") String aid) ;
-
+    //删除评论
+    int artCommentsDel(ArtComment artComment);
 }

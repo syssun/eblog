@@ -70,13 +70,16 @@
                 <button type="button" class="btn btn-danger btn-sm" style="margin-top: 1rem;">&nbsp;&nbsp;发表&nbsp;&nbsp;</button>
             </div>
             <hr>
-            <div th:replace="components/comment::comment(${data.aid})"></div>
+            <div  th:if="${data.comments > 0}">
+                <div th:replace="components/comment::comment(${data.aid})"  ></div>
+            </div>
 
         </div>
         <div class="col-sm-1">
 
         </div>
         <div class="col-sm-2">
+
             <div th:replace="components/hotart::hotart"></div>
             <!--<div th:replace="components/recart::recart"></div>-->
         </div>
