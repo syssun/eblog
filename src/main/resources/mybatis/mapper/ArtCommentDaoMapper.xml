@@ -10,8 +10,6 @@
 		where acid = #{acid}
 	</update>
 	<insert id="artCommentAdd" parameterType="ArtComment">
-		/*insert into artcomment (aid, content, userid, adddate, upddate, delflg)
-		values (#{aid},#{content},'1',now(),now(),'0')*/
 		insert into artcomment (aid, content, adddate, upddate, delflg)
 		values (#{aid},#{content},now(),now(),0)
 	</insert>

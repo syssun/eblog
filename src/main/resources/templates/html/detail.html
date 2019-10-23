@@ -44,7 +44,7 @@
 </head>
 <body>
 <div th:replace="components/header::header"></div>
-<div class="container-fluid" style="margin-top: 0.8rem">
+<div class="container-fluid" style="margin-top: 0.8rem;padding-bottom: 1rem">
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-8">
@@ -94,7 +94,6 @@
         comment:function(obj){
             let aid = obj.getAttribute('data-aid');
             let content = $("#comment").val();
-            alert(content)
             $.ajax({
                 url:'/web/comment/add',
                 method:'POST',

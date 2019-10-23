@@ -7,6 +7,7 @@ import com.sys.eblog.moudles.web.dao.ArtCommentDao;
 import com.sys.eblog.moudles.web.dao.ArticleDao;
 import com.sys.eblog.moudles.web.dao.HotArtDao;
 import com.sys.eblog.test.TestDao;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,6 +86,7 @@ public class index {
      article.setAid(artComment.getAid());
      article.setComments(1);
      articleDao.artUpdateReads(article); //+1
+     //artComment.setContent(StringEscapeUtils.escapeHtml4(artComment.getContent()));
      artCommentDao.artCommentAdd(artComment);
      //保存评论
      data.setData("");

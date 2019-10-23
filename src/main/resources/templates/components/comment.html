@@ -7,18 +7,19 @@
 <body>
 <div th:fragment="comment(aid)" >
     <style>
+        .media{
+            margin-top: 0.8rem;
+        }
         .tt{
             margin-top: 0.8rem;
             font-size: 0.1em;
             color: #5a6268;
         }
     </style>
-    <div class="media"> <!--评价区域-->
-        <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">
-        <div class="media-body" style="font-size: 0.8rem;" id="comments_div">
+    <div id="comments_div">
 
-        </div>
     </div>
+
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"crossorigin="anonymous"></script>
     <script>
         var comments = {
@@ -31,8 +32,15 @@
                         var ht = '';
                         var data = res.data ;
                         $.each(data,function (index,item) {
-                            let s = '<div>'+item.content+'</div>'+
-                                    '<div class="tt">'+tts(item.adddate)+'</div>';
+                            console.log(item)
+                           // alert(t)
+                            let s = '<div class="media">\n' +
+                                '            <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">\n' +
+                                '            <div class="media-body" style="font-size: 0.8rem;" >\n' +
+                                '                <div th:text="'+item.content+'">'+item.content+'</div>\n' +
+                                '                <div class="tt">'+tts(item.adddate)+'</div>\n' +
+                                '            </div>\n' +
+                                '        </div>';
                             console.log(tts(item.adddate))
 
                             ht = ht+s;
@@ -42,7 +50,10 @@
                 })
             }
         }
-        comments.init();
+
+        setTimeout(function () {
+            comments.init();
+        },500)
 
         function tts(d) {
             var myDate = new Date(d);//获取系统当前时间

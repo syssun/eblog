@@ -14,7 +14,7 @@ public class WebMvcConfigurer extends WebMvcConfigurationSupport {
          */
         registry.addInterceptor(new AuthorityInterceptor())
                 .addPathPatterns("/**/**")
-            .excludePathPatterns("/static/**");
+            .excludePathPatterns("/static/**"); //不拦截
         super.addInterceptors(registry);
     }
 
@@ -33,10 +33,21 @@ public class WebMvcConfigurer extends WebMvcConfigurationSupport {
         // to  avoid HttpMediaTypeNotAcceptableException on standalone tomcat
         configurer.favorPathExtension(false);
     }
-
+    //静态文件配置
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/static/");
         super.addResourceHandlers(registry);
     }
+
+
+
+
+
+
+
+
+
+
+
 }
