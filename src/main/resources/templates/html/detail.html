@@ -98,7 +98,7 @@
         var content = hi_div.innerHTML;
         console.log(content)
        var h = hi_div.clientHeight||hi_div.offsetHeight;
-       console.log($("#hidden_div").height())
+       var hhe = ($("#hidden_div").height())
         if (iframe !== null && content.length > 0) {
             var ifrdoc = iframe.contentWindow.document;
             //开启文档的编辑模式
@@ -107,6 +107,7 @@
             ifrdoc.open();
             //写入内容
             ifrdoc.write(content);
+            ifrdoc.height=hhe;
             //关闭数据流
             ifrdoc.close();
             //关闭文档编辑模式
