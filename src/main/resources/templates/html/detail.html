@@ -62,7 +62,10 @@
                     </div>
                     <hr>
                     <div class="media-p">
-                        <div  th:utext="${data.content}"></div>
+                        <iframe width="100%" height="100%" id="ntkoform">
+
+                        </iframe>
+                        <div  th:utext="${data.content}" style="display: none" id="hidden_div"></div>
                     </div>
                 </div>
             </div>
@@ -88,6 +91,32 @@
         </div>
     </div>
 </div>
+<script>
+   function  handleShowMessage(){
+        var iframe = document.getElementById("ntkoform");
+        var hi_div = document.getElementById("hidden_div") ;
+        var content = hi_div.innerHTML;
+        console.log(content)
+       var h = hi_div.clientHeight||hi_div.offsetHeight;
+       console.log(h)
+        if (iframe !== null && content.length > 0) {
+            var ifrdoc = iframe.contentWindow.document;
+            //开启文档的编辑模式
+            ifrdoc.designMode = "on";
+            //打开数据流
+            ifrdoc.open();
+            //写入内容
+            ifrdoc.write(content);
+            //关闭数据流
+            ifrdoc.close();
+            //关闭文档编辑模式
+            ifrdoc.designMode ="off";
+        }else {
+            iframe.style.height = '0'
+        }
+    }
+    handleShowMessage()
+</script>
 <div th:replace="components/js::js"></div>
 <script src="/static/js/layer/layer.js"></script>
 <script>
