@@ -49,7 +49,7 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-7">
-                <div  th:each="item,itemStat : ${list}">
+                <div  th:each="item,itemStat : ${list.list}">
                     <div class="media media-h " th:attr="data-id=${item.aid}" th:onclick='index.toDetail(this)'>
                         <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">
                         <div class="media-body">
@@ -98,16 +98,18 @@
     layui.use('laypage', function(){
         var laypage = layui.laypage;
         //执行一个laypage实例
+        var total = [[${list.total}]] ;
+        var curr = [[${list.pageNum}]] ;
+
         laypage.render({
             elem: 'pagination' //注意，这里的 test1 是 ID，不用加 # 号
-            ,count: 50 //数据总数，从服务端得到
+            ,count: total //数据总数，从服务端得到
+            ,curr:curr
             ,jump: function(obj, first){
-                //obj包含了当前分页的所有参数，比如：
-                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                console.log(obj.limit); //得到每页显示的条数
+                //obj包含了当前分页的所有参数
                 //首次不执行
                 if(!first){
-                    //do something
+                   window.location.href="/web/index?pageNum="+obj.curr+"&pageSize="+obj.limit ;
                 }
             }
         });

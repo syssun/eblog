@@ -7,6 +7,24 @@ public class BaseBean implements Serializable {
     private Date adddate ;
     private Integer delflg;
     private Date upddate;
+    private Integer pageNum;
+    private Integer pageSize;
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
 
     public Date getAdddate() {
         return adddate;

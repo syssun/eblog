@@ -1,21 +1,17 @@
 package com.sys.eblog.moudles.web.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sys.eblog.base.beans.Data;
 import com.sys.eblog.moudles.web.beans.ArtComment;
 import com.sys.eblog.moudles.web.beans.Article;
 import com.sys.eblog.moudles.web.dao.ArtCommentDao;
 import com.sys.eblog.moudles.web.dao.ArticleDao;
 import com.sys.eblog.moudles.web.dao.HotArtDao;
-import com.sys.eblog.test.TestDao;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.jws.WebParam;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/web")
@@ -29,11 +25,13 @@ public class index {
     //首页
     @RequestMapping("/index")
     public String index(Model model, Article article){
-
-        Map m = new HashMap();
-        m.put("a",articleDao.getArtList(article));
-        System.out.println(m.toString());
-        model.addAttribute("list",articleDao.getArtList(article));
+        if(article.getPageNum()==null){
+            article.setPageNum(1);
+            article.setPageSize(10);
+        }
+        PageHelper.startPage(article.getPageNum(),article.getPageSize());
+        PageInfo<Article> pageInfo = new PageInfo<>(articleDao.getArtList(article));
+        model.addAttribute("list",pageInfo);
         return "index";
     }
     //明细
