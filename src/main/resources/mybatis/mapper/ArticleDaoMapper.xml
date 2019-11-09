@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sys.eblog.moudles.web.dao.ArticleDao">
     <select id="getArtList" resultType="Article" parameterType="Article">
-		select a.simg,a.title,a.zans,a.adddate,a.artreads as "artreads",a.adddate,a.scontent,
+		select a.simg,a.title,a.zans,a.artreads as "artreads",a.adddate,a.scontent,
 		a.labels,a.comments,a.aid
 		from article a where a.delflg=0
 		<if test="title !=null and title !='' ">
