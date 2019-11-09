@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sys.eblog.moudles.web.dao.ArtCommentDao">
     <select id="getArtComments" resultType="ArtComment" parameterType="String">
-		select a.aid,a.content,a.userid,a.adddate
+		select a.aid,a.content,a.userid,a.adddate,
+		concat('/static/images/',FLOOR(RAND() * 12),'.jpg') as simg
 		from artcomment a where a.delflg=0 and a.aid=#{aid}
 	</select>
 	<update id="artCommentsDel" parameterType="ArtComment">

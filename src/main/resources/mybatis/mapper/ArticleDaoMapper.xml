@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sys.eblog.moudles.web.dao.ArticleDao">
     <select id="getArtList" resultType="Article" parameterType="Article">
-		select a.simg,a.title,a.zans,a.artreads as "artreads",a.adddate,a.scontent,
-		a.labels,a.comments,a.aid
+		select a.title,a.zans,a.artreads as "artreads",a.adddate,a.scontent,
+		a.labels,a.comments,a.aid,
+		concat('/static/images/',FLOOR(RAND() * 12),'.jpg') as simg
 		from article a where a.delflg=0
 		<if test="title !=null and title !='' ">
 			and a.title like "%"#{title}"%"
@@ -12,8 +13,9 @@
 		order by a.aid desc
 	</select>
 	<select id="getArtByAid" resultType="Article" parameterType="String">
-		select a.simg,a.title,a.zans,a.adddate,a.artreads as "artreads",a.adddate,
-		a.scontent,a.labels,a.comments,a.aid,a.content
+		select a.title,a.zans,a.adddate,a.artreads as "artreads",a.adddate,
+		a.scontent,a.labels,a.comments,a.aid,a.content,
+		concat('/static/images/',FLOOR(RAND() * 12),'.jpg') as simg
 		from article a where a.delflg=0 and a.aid = #{aid}
 	</select>
 	<insert id="artAdd" parameterType="Article">

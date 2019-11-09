@@ -35,14 +35,12 @@
                             console.log(item)
                            // alert(t)
                             let s = '<div class="media">\n' +
-                                '            <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">\n' +
+                                '            <img src="'+item.simg+'" class="align-self-start mr-3" style="width: 3.75rem;">\n' +
                                 '            <div class="media-body" style="font-size: 0.8rem;" >\n' +
                                 '                <div th:text="'+item.content+'">'+item.content+'</div>\n' +
                                 '                <div class="tt">'+tts(item.adddate)+'</div>\n' +
                                 '            </div>\n' +
                                 '        </div>';
-                            console.log(tts(item.adddate))
-
                             ht = ht+s;
                         })
                         $("#comments_div").html(ht);

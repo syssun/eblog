@@ -20,6 +20,7 @@
         a:active{text-decoration:none;color: #000000;}
         .media-h{
             cursor: pointer;
+            height:7rem;
         }
         .media .media-span{
             margin-top: 0.8rem;
@@ -51,7 +52,7 @@
             <div class="col-sm-7">
                 <div  th:each="item,itemStat : ${list.list}">
                     <div class="media media-h " th:attr="data-id=${item.aid}" th:onclick='index.toDetail(this)'>
-                        <img src="https://static.runoob.com/images/mobile-icon.png" class="align-self-start mr-3" style="width: 3.75rem;">
+                        <img th:src="@{${item.simg}}"  class="align-self-start mr-3" style="width: 3.75rem;">
                         <div class="media-body">
                             <h5>
                                 <b th:text="${item.title}"></b>

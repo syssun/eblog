@@ -7,6 +7,15 @@ public class ArtComment extends BaseBean {
     private Integer aid;
     private String content;
     private Integer userid;
+    private String  simg;
+
+    public String getSimg() {
+        return simg;
+    }
+
+    public void setSimg(String simg) {
+        this.simg = simg;
+    }
 
     public Integer getAcid() {
         return acid;
