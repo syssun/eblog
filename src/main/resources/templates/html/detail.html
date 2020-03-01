@@ -30,7 +30,7 @@
             color: #4d4d4d;
             line-height: 26px;
             font-weight: 400;
-            overflow-x:auto;
+
             background-color: #F7F7F7;
             padding: 0.5rem 1rem;
         }
@@ -42,15 +42,16 @@
         }
         .cdcdcd{
             z-index: 99999999;
+            overflow-x:auto;
         }
     </style>
 </head>
-<body>
+<body style="margin-bottom: 50px;">
 <div th:replace="components/header::header"></div>
 <div class="container-fluid" style="margin-top: 0.8rem;padding-bottom: 1rem">
     <div class="row">
         <div class="col-sm-2"></div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 cdcdcd">
             <div class="media media-h cdcdcd ">
                 <div class="media-body">
                     <h4>
