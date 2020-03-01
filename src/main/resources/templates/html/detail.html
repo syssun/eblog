@@ -30,7 +30,7 @@
             color: #4d4d4d;
             line-height: 26px;
             font-weight: 400;
-            overflow-x:hidden;
+            overflow-x:auto;
             background-color: #F7F7F7;
             padding: 0.5rem 1rem;
         }
@@ -40,15 +40,18 @@
         .card-body p{
             cursor: pointer;
         }
+        .cdcdcd{
+            z-index: 99999999;
+        }
     </style>
 </head>
 <body>
 <div th:replace="components/header::header"></div>
 <div class="container-fluid" style="margin-top: 0.8rem;padding-bottom: 1rem">
     <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-8">
-            <div class="media media-h ">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-6">
+            <div class="media media-h cdcdcd ">
                 <div class="media-body">
                     <h4>
                         <b th:text="${data.title}"></b>
@@ -82,7 +85,7 @@
         </div>
         <div class="col-sm-1">
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div th:replace="components/hotart::hotart"></div>
             <!--<div th:replace="components/recart::recart"></div>-->
         </div>

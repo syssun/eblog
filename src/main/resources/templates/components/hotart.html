@@ -12,10 +12,20 @@
     #hotart_body a{
 
     }
+    .ddcc{
+        margin-left: 30px;
+    }
+    .h5, h5 {
+        font-size: 1rem;
+    }
+    .card{
+        margin-bottom: 0.9rem;
+    }
 </style>
     <div class="card">
         <div class="card-header bg-dark text-white">热门阅读排行</div>
         <div class="card-body" id="hotart_body">
+
         </div>
     </div>
     <script>
@@ -28,8 +38,9 @@
                    success:function (res) {
                        var ht = '';
                        var data = res.data ;
+                       console.log(data)
                        $.each(data,function (index,item) {
-                           let s = '<p><a href="/web/detail/'+item.aid+'">'+item.title+'</a></p>';
+                           let s = '<p><a href="/web/detail/'+item.aid+'">'+item.title+'</a><span class="badge ddcc badge-secondary">'+item.reads+'</span></p>';
                            ht = ht+s;
                        })
                        $("#hotart_body").html(ht);

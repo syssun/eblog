@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sys.eblog.moudles.web.dao.HotArtDao">
-    <select id="getAllHotArt" resultType="HotArt" >
+    <select id="getAllHotArt" resultType="HotArt">
 		select h.aid,h.title,h.reads,h.adddate from hotart h
-		where h.pid=(select max(w.pid) from hotart w group by w.pid)
+		where h.id in (select max(w.id) from hotart w group by w.aid
+			) order by h.adddate desc
 	</select>
 
 </mapper>
