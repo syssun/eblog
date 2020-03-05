@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/libs/fontawesome5/css/all.css">
     <title th:text="${data.title}">E博客</title>
     <style type="text/css">
         a:link{text-decoration:none;}
@@ -41,7 +42,6 @@
             cursor: pointer;
         }
         .cdcdcd{
-            z-index: 99999999;
             overflow-x:auto;
         }
     </style>
@@ -62,7 +62,9 @@
                         <span class="d">阅读：<span th:text="${data.artreads}">0</span></span>
                         <span class="d">评论：<span th:text="${data.comments}">0</span></span>
                         <span class="d" th:text="${#dates.format(data.adddate,'yyyy-MM-dd HH:mm:ss')}"></span>
-                        <span class="c" th:attr="data-id=${data.aid}" th:onclick='details.zans(this)'>点赞</span>
+                        <span class="c glyphicon glyphicon-heart" th:attr="data-id=${data.aid}" th:onclick='details.zans(this)'>
+                            <i class="fas fa-camera"></i>
+                        </span>
                     </div>
                     <hr>
                     <div class="media-p">
@@ -106,6 +108,7 @@
                 contentType: "application/json;charset-UTF-8",
                 data:JSON.stringify({"aid":aid,"content":content}),
                 success:function (res) {
+
                     if(res.code==1){
                         layer.msg('发表成功',{icon:1,time:2000});
                         setTimeout(function () {
@@ -122,6 +125,8 @@
                 url:'/web/zans/'+obj.getAttribute('data-id'),
                 dataType:'json',
                 success:function (res) {
+                    console.log(res)
+                    console.log(layer)
                     if(res.code==1){
                         layer.msg('谢谢您的支持',{icon:1,time:2000});
                         setTimeout(function () {
