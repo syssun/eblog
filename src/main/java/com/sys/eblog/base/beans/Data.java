@@ -6,6 +6,7 @@ import com.alibaba.fastjson.serializer.SerializeFilter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ValueFilter;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**

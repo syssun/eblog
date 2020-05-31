@@ -26,9 +26,8 @@ public class AuthorityInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object object) throws Exception {
         String uri = request.getRequestURI();
-        log.info("拦截" + uri);
         HttpSession session = request.getSession();
-        System.out.println("preHandle");
+        System.out.println("preHandle_uri"+uri);
         if(uri.contains("hello")) {  //需要拦截的uri
             response.getWriter().write("<script>alert('1');location.href='/login'</script>");
             return false;

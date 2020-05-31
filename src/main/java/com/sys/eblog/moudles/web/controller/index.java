@@ -23,7 +23,7 @@ public class index {
     @Autowired
     private ArtCommentDao artCommentDao;
     //首页
-    @RequestMapping("/index")
+    @RequestMapping(value = {"/index","","/"})
     public String index(Model model, Article article){
         if(article.getPageNum()==null){
             article.setPageNum(1);
