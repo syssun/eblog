@@ -2,6 +2,7 @@ package com.sys.eblog;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.sys.eblog.base.annotation.MyBatisDao;
 import org.apache.catalina.connector.Connector;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageConverter;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"com.sys.eblog"})
+@MapperScan(basePackages = {"com.sys.eblog"},annotationClass = MyBatisDao.class)
 public class EblogApplication {
     public static void main(String[] args) {
 

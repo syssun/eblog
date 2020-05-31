@@ -1,12 +1,13 @@
 package com.sys.eblog.moudles.web.dao;
 
+import com.sys.eblog.base.annotation.MyBatisDao;
 import com.sys.eblog.moudles.web.beans.Article;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
+@MyBatisDao
 public interface ArticleDao {
     //获取所有文章
     List<Article> getArtList(Article article);
